@@ -1,0 +1,2 @@
+1;centro;centro;ABC123;2023-10-12T12:45:30;2023-09-01T12:45:30;samisanti2011;null;1;null
+2;norte;norte;DEK123;2023-10-15T12:45;2023-10-15T12:45;daniela;null;3;null

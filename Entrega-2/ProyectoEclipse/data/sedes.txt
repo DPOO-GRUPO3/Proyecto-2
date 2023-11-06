@@ -1,0 +1,3 @@
+centro;carrera 1;00:00:00;23:59:59
+norte;autopista principal;00:00:00;23:59:59
+sur;calle 45;00:00:00;23:59:59
