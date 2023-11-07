@@ -1,3 +1,0 @@
-2;Laura Hurtado;laura;123;sur
-3;Sara Martinez;sara;123;norte
-1;Juan Gómez;juan;123;centro

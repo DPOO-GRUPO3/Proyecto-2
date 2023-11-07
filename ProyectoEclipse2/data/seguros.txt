@@ -1,2 +1,0 @@
-accidentes;250
-perdida;700
