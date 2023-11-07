@@ -32,7 +32,7 @@ public class InterfazEmpleado {
 			try
 			{
 				mostrarMenu();
-				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opción"));
+				int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opciï¿½n"));
 				
 				if (opcion_seleccionada == 1)
 					inicializacion = login();
@@ -52,21 +52,21 @@ public class InterfazEmpleado {
 				else if (opcion_seleccionada == 5)
 				{
 					cargarDatos();
-					System.out.println("Saliendo de la aplicación ...");
+					System.out.println("Saliendo de la aplicaciï¿½n ...");
 					continuar = false;
 				}
 				else if (inicializacion == false)
 				{
-					System.out.println("Para poder ejecutar esta opción primero debe iniciar sesión");
+					System.out.println("Para poder ejecutar esta opciï¿½n primero debe iniciar sesiï¿½n");
 				}
 				else
 				{
-					System.out.println("Por favor seleccione una opción válida.");
+					System.out.println("Por favor seleccione una opciï¿½n vï¿½lida.");
 				}
 			}
 			catch (NumberFormatException e)
 			{
-				System.out.println("Debe seleccionar uno de los números de las opciones.");
+				System.out.println("Debe seleccionar uno de los nï¿½meros de las opciones.");
 			}
 		}
 	}
@@ -78,7 +78,7 @@ public static void actualizarCarro()
 {
 	String placa = input("Digite la placa del carro:");
 	LocalDateTime fecha = LocalDateTime.now();
-	int dias = Integer.parseInt(input("Inserte el número de días que necesuta el carro en limpieza o manentenimiento (max 2)"));
+	int dias = Integer.parseInt(input("Inserte el nï¿½mero de dï¿½as que necesuta el carro en limpieza o manentenimiento (max 2)"));
 	
 	elEmpleado.ActualizarCarro(placa, fecha, dias);
 	
@@ -93,13 +93,13 @@ private static void cumplimientoFechaCarro()
 	
 }
 
-//login del usuario y contraseña
+//login del usuario y contraseï¿½a
 	
 public static boolean login()	
 {
 
 	String usuario = input("Inserte su usuario: ");
-	String contrasena = input ("Ingrese contraseña: ");
+	String contrasena = input ("Ingrese contraseï¿½a: ");
 	
 	
 	if ((InterfazEmpleado.datos.getMapaEmpleados().get(usuario)!= null))
@@ -110,7 +110,7 @@ public static boolean login()
 		{
 			return true;
 		}
-		else { System.out.println("Usuario o contraseña incorrectos");}
+		else { System.out.println("Usuario o contraseï¿½a incorrectos");}
 	}
 	
 	else {System.out.println("Usuario inexistente, por favor vuelva a intentarlo");}
@@ -123,13 +123,13 @@ public static boolean login()
 private static void crearAlquiler() 
 {
 	Alquiler alquiler;
-	String reserva = input("¿El cliente tiene una reserva? (SI/NO)");
+	String reserva = input("ï¿½El cliente tiene una reserva? (SI/NO)");
 	String cliente = input("Ingrese el usuario del cliente");
-	String sedeDevolución = input("Ingrese la sede en donde se desea devolver el vehículo");
-	String sedeRecoger = input("Ingrese la sede en donde se recoge el vehículo"); 
-	LocalDateTime fechaDeb = LocalDateTime.parse(input("Ingrese fecha de devolución del vehículo (yyyy-MM-dd'T'HH:mm:ss)"));
-	LocalDateTime fechaInicio = LocalDateTime.parse(input("Ingrese fecha para recoger vehículo (yyyy-MM-dd'T'HH:mm:ss)"));
-	String categoria = input("Digite la categoría del vehículo deseada: ");
+	String sedeDevolucion = input("Ingrese la sede en donde se desea devolver el vehï¿½culo");
+	String sedeRecoger = input("Ingrese la sede en donde se recoge el vehï¿½culo"); 
+	LocalDateTime fechaDeb = LocalDateTime.parse(input("Ingrese fecha de devoluciï¿½n del vehï¿½culo (yyyy-MM-dd'T'HH:mm:ss)"));
+	LocalDateTime fechaInicio = LocalDateTime.parse(input("Ingrese fecha para recoger vehï¿½culo (yyyy-MM-dd'T'HH:mm:ss)"));
+	String categoria = input("Digite la categorï¿½a del vehï¿½culo deseada: ");
 	
 	//Verificar si ya existe reserva
 	if (reserva.equals("SI"))
@@ -139,16 +139,16 @@ private static void crearAlquiler()
 	
 	else 
 	{
-		alquiler = elEmpleado.CrearAlquiler(cliente, sedeDevolución, sedeRecoger, fechaDeb, fechaInicio, categoria);
+		alquiler = elEmpleado.CrearAlquiler(cliente, sedeDevolucion, sedeRecoger, fechaDeb, fechaInicio, categoria);
 	}
 	
 	// Agregar seguros si es posible crear el alquiler
 	if (alquiler.equals(null)) {
-		System.out.println("No hay un vehículo disponible en este momento");
+		System.out.println("No hay un vehï¿½culo disponible en este momento");
 	} else {
 		// Preguntar si desea adquirir un nuevo seguro
 
-		String seguro = input("Desea adquirir algún tipo de seguro (SI/NO)");
+		String seguro = input("Desea adquirir algï¿½n tipo de seguro (SI/NO)");
 
 		if (seguro.equalsIgnoreCase("SI")) {
 			boolean condicion = true;
@@ -157,7 +157,7 @@ private static void crearAlquiler()
 				Seguro seg = menuSeguros();
 				alquiler.setSeguro(seg);
 
-				String continuar = input("Desea añadir más seguros (SI/NO)");
+				String continuar = input("Desea aï¿½adir mï¿½s seguros (SI/NO)");
 
 				if (!(continuar.equalsIgnoreCase("SI"))) {
 					condicion = false;
@@ -168,7 +168,7 @@ private static void crearAlquiler()
 		alquiler.setLicencia( InterfazEmpleado.datos.getMapaClientes().get(cliente).getLicencia());
 		
 		//Crear las licencias que necesite el cliente
-		String licencia = input("Desea añadir más licencias");
+		String licencia = input("Desea aï¿½adir mï¿½s licencias");
 
 		if (licencia.equalsIgnoreCase("SI")) {
 			boolean condicion = true;
@@ -176,10 +176,10 @@ private static void crearAlquiler()
 
 			while (condicion) {
 				contador++;
-				String lic = input("Ingrese número de licencia");
+				String lic = input("Ingrese nï¿½mero de licencia");
 				alquiler.setLicencia(InterfazEmpleado.datos.getMapaLicencias().get(lic));
 
-				String continuar = input("Desea añadir más licencias (SI/NO)");
+				String continuar = input("Desea aï¿½adir mï¿½s licencias (SI/NO)");
 
 				if (!(continuar.equalsIgnoreCase("SI"))) {
 					condicion = false;
@@ -230,14 +230,14 @@ public static void cargarDatos() throws IOException {
 	elEmpleado.actualizarDatos();
 }
 
-//Mostrar menú
+//Mostrar menï¿½
 public static void mostrarMenu()
 {
-		System.out.println("\nOpciones de la aplicación\n");
+		System.out.println("\nOpciones de la aplicaciï¿½n\n");
 		System.out.println("1. LogIn");
 		System.out.println("2. Crear un Alquiler");
-		System.out.println("3. Modificar fecha de finalización de limpieza o mantenimiento");
-		System.out.println("4. Cambiar fecha de vehículos que ya completaron limpieza");
+		System.out.println("3. Modificar fecha de finalizaciï¿½n de limpieza o mantenimiento");
+		System.out.println("4. Cambiar fecha de vehï¿½culos que ya completaron limpieza");
 		System.out.println("5. LogOut");
 
 }
