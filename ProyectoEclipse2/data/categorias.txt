@@ -1,0 +1,3 @@
+todoterreno;700.0
+familiares;300.0
+lujoso;1500.0
