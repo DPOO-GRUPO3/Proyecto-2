@@ -11,7 +11,7 @@ import controller.BaseDatos;
 
 import view.InterfazCliente;
 public class Aplicacion {
-	private BaseDatos datos;
+	private static BaseDatos datos;
 
 	public void ejecutarAplicacion() throws Exception
 	{
@@ -76,7 +76,7 @@ public class Aplicacion {
 			}
 			return null;
 		}
-		private void cargarDatos() {
+		public static BaseDatos cargarDatos() {
 			System.out.println("Cargando datos: ");
 
 
@@ -85,17 +85,21 @@ public class Aplicacion {
 				datos = new BaseDatos();
 				datos.descargarTodoslosDatos();
 				System.out.println("Se actualizaron los datos");
-				
+				return datos;
 			}
 			catch (FileNotFoundException e)
 			{
 				System.out.println("ERROR: el archivo indicado no se encontró.");
+				return null;
 			}
+				
 			catch (IOException e)
 			{
 				System.out.println("ERROR: hubo un problema leyendo el archivo.");
 				System.out.println(e.getMessage());
+				return null;
 			}
+			
 		}
   public static void main(String[] args) throws Exception {
 	
