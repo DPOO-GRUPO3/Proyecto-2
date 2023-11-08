@@ -34,7 +34,7 @@ public void setDatos(BaseDatos datos) {
 }
 public void logIn(String usuario,String contrasena) {
 	Cliente cliente = datos.getMapaClientes().get(usuario);
-	if(cliente.equals(null)==false) {
+	if(cliente!=null) {
 		String contr=cliente.getContrasena();
 		if(contr.equals(contrasena)==true) {
 			this.cliente=cliente;

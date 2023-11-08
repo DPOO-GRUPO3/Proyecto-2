@@ -15,7 +15,7 @@ public static void login(BaseDatos datos) {
 	String contrasena =VentanaPrincipal.getContrasena().getText();
 	
 	elCliente.logIn(usuario, contrasena);
-	if(elCliente.getCliente().equals(null)) {
+	if(elCliente.getCliente()==null){
 		System.out.println("Error ingresando sesión");
 		
 	}
