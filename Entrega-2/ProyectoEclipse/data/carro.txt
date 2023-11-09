@@ -1,9 +1,7 @@
-DEK123;buggati;10;plateado;b;;lujoso;norte;alquilado;null
+DEK123;buggati;10;plateado;b;;lujoso;norte;Disponible;null
 MHIL23;mercedes;7;negro;b;;todoterreno;sur;Disponible;null
-GHI223;mclaren;7;plateado;b;;lujoso;sur;Disponible;null
-ABJ523;ferrari;45;azul;a;;lujoso;centro;Disponible;null
-NEK323;chevrolet;10;plateado;b;;todoterreno;norte;Disponible;null
-GHI153;twingo;7;plateado;b;;familiares;sur;Disponible;null
-LBJ123;toyota;45;azul;a;;todoterreno;centro;Disponible;null
-DEF183;mazda;10;plateado;b;;familiares;norte;Disponible;null
-ABC163;renault;45;azul;a;;familiares;centro;alquilado;2023-12-01T12:45
+ABJ123;ferrari;45;azul;a;;lujoso;centro;Disponible;null
+NEK123;chevrolet;10;plateado;b;;todoterreno;norte;Disponible;null
+GHI123;twingo;7;plateado;b;;familiares;sur;Disponible;null
+DEF123;mazda;10;plateado;b;;familiares;norte;Disponible;null
+ABC123;renault;45;azul;a;;familiares;centro;alquilado;2023-12-01T12:45

@@ -15,6 +15,62 @@ import controller.ControllerCliente;
 public class VentanaCliente implements ActionListener{
 
 private static ControllerCliente elCliente;
+public static ControllerCliente getElCliente() {
+	return elCliente;
+}
+
+public static void setElCliente(ControllerCliente elCliente) {
+	VentanaCliente.elCliente = elCliente;
+}
+
+public static JFrame getFrame() {
+	return frame;
+}
+
+public static void setFrame(JFrame frame) {
+	VentanaCliente.frame = frame;
+}
+
+public static JTextField getCategoria() {
+	return categoria;
+}
+
+public static void setCategoria(JTextField categoria) {
+	VentanaCliente.categoria = categoria;
+}
+
+public static JTextField getFechaInicial() {
+	return fechaInicial;
+}
+
+public static void setFechaInicial(JTextField fechaInicial) {
+	VentanaCliente.fechaInicial = fechaInicial;
+}
+
+public static JTextField getFechaFin() {
+	return fechaFin;
+}
+
+public static void setFechaFin(JTextField fechaFin) {
+	VentanaCliente.fechaFin = fechaFin;
+}
+
+public static JTextField getSedeInicio() {
+	return sedeInicio;
+}
+
+public static void setSedeInicio(JTextField sedeInicio) {
+	VentanaCliente.sedeInicio = sedeInicio;
+}
+
+public static JTextField getSedeFin() {
+	return sedeFin;
+}
+
+public static void setSedeFin(JTextField sedeFin) {
+	VentanaCliente.sedeFin = sedeFin;
+}
+
 private static JFrame frame;
 private static JTextField categoria;
 private static JTextField fechaInicial;
@@ -91,12 +147,19 @@ private static void cargarVentanaCliente() {
     panel.add(labelSedeFin);
     panel.add(sedeFin);
     
-    // botón login
+    // botón Crear Reservas
     JButton inicio = new JButton("Crear Reserva");
     inicio.setBounds(50, 240, 150, 25);
     inicio.addActionListener(new VentanaCliente());
     panel.add(inicio);
+   
+    
+    // Botón LogOut
+    panel=BotonLogOut.crearBotonLogOut(panel, 200, 240, 150, 25);
+    
+    
     frame.setVisible(true);
+    
 }
 
 @Override

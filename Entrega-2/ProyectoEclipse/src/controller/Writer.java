@@ -78,7 +78,8 @@ public class Writer {
 		String fechaInicio = String.valueOf(temporada.getInicioTemporada());
 		String fechaFin = String.valueOf(temporada.getFinTemporada());
 		String tarifa = String.valueOf(temporada.getTarifaTemporada());
-		return id + ";" + fechaInicio + ";" + fechaFin + ";" + tarifa;
+		String categ =String.valueOf(temporada.getCategoria().getNombre());
+		return id + ";" + fechaInicio + ";" + fechaFin + ";" + tarifa+ ";" +categ;
 
 	}
 
@@ -158,9 +159,10 @@ public class Writer {
 		String nombre = empleado.getNombre();
 		String usuario = empleado.getUsuario();
 		String contrasena = empleado.getContrasena();
+		String email =empleado.getEmail();
 		String sede = empleado.getSede().getNombre();
 
-		return id + ";" + nombre + ";" + usuario + ";" + contrasena + ";" + sede;
+		return id + ";" + nombre + ";" + usuario + ";" + contrasena + ";" + email+ ";" +sede;
 	}
 
 //UNDECIMO OBJETO: SEGURO

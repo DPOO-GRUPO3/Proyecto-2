@@ -162,6 +162,7 @@ public Reserva descomprimirReserva(String linea,HashMap<String, Sede> mapaSedes,
 	
 	Reserva r =new Reserva(cliente, in, fin, cat, carro, sIn, sFin);
 	r.setNumReserva(Integer.parseInt(id));
+	
 	return r;
 } 
 // NOVENO OBJETO: ALQUILER
@@ -247,8 +248,9 @@ public Administrador descomprimirAdministrador(String linea, HashMap<String, Sed
 public Seguro descomprimirSeguro(String linea)
 {
 	String[] partes = linea.split(";");
-	String nombre = partes[0];
-	Double precio= Double.parseDouble(partes[1]);
+
+	String nombre = partes[1];
+	Double precio= Double.parseDouble(partes[2]);
 	
 	return new Seguro(nombre,precio);
 }

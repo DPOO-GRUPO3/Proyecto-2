@@ -78,7 +78,7 @@ public static Usuario getUsuario() {
 		cargarVentanaPrincipal();
     }
 
-	private static void cargarVentanaPrincipal() {
+	public static void cargarVentanaPrincipal() {
 		// TODO Auto-generated method stub
 	    frame = new JFrame("RamenAutos");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -639,7 +639,7 @@ public void descargarTodoslosDatos() throws IOException {
 	crearMapaAlquileres();
 	crearMapaEmpleados();
 	crearMapaAdministradores();
-	crearMapaFacturas();
+	//crearMapaFacturas();
 	
 	
 }
@@ -658,7 +658,7 @@ public void cargarTodosLosDatos() throws IOException {
 	actualizarArchivoSeguros();
 	actualizarArchivoTarjetas();
 	actualizarArchivoTemporadas();
-	actualizarArchivoFacturas();
+	//actualizarArchivoFacturas();
 	
 }
 }

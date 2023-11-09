@@ -12,6 +12,14 @@ public class Empleado implements Usuario {
 	
 	private String contrasena;
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	private String email;
 	
 	private Sede sede;
