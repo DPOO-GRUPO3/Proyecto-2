@@ -60,17 +60,17 @@ public double crearReserva(String nombreCategoria, String sedeRec,
 	
 	for(Carro carro:mapaCarros.values()) {
 		LocalDateTime fechadisp=carro.getFechaDispCons();
-		if(fechadisp.equals(null)==false && fechadisp.plusDays(2).isAfter(fechaPed1)) {
+		if(fechadisp!=null && fechadisp.plusDays(2).isAfter(fechaPed1)) {
 			continue; //descartamos el carro por fecha disponibilidad
 		}
-	
+		if (carro.getUsoActual()!=null) {
 		LocalDateTime entregaAlquiler=carro.getUsoActual().getFechaDeb();
 	
-		if(entregaAlquiler.isAfter(fechaPed1)==true)  {
+		if(entregaAlquiler.isAfter(fechaPed1))  {
 				
 			continue; //descartamos el carro por estar alquilado
 		}
-		
+		}
 		if(hayReservasEnIntervalo(carro,fechaPed1,fechaPed2)==true) {
 			continue;
 		}
