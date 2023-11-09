@@ -71,8 +71,17 @@ public static Usuario getUsuario() {
 	private static JTextField nombreUsuario;
 	private static JTextField contrasena;
 	private static JTextField tipoUsuario;
+	private static JLabel errorLogIn;
 	
-// Métodos
+public static JLabel getErrorLogIn() {
+		return errorLogIn;
+	}
+
+	public static void setErrorLogIn(JLabel errorLogIn) {
+		VentanaPrincipal.errorLogIn = errorLogIn;
+	}
+
+	// Métodos
 	public static void main(String[] args) {
 		baseDatos=Aplicacion.cargarDatos();
 		cargarVentanaPrincipal();
@@ -122,7 +131,13 @@ public static Usuario getUsuario() {
 	    inicio.setBounds(10, 140, 80, 25);
 	    inicio.addActionListener(new VentanaPrincipal());
 	    panel.add(inicio);
+	    
+	    // errorLogIn
+	    errorLogIn= new JLabel("");
+	    errorLogIn.setBounds(10, 240, 200, 25);
+	    panel.add(errorLogIn);
 	    frame.setVisible(true);
+	    
 		
 	}
 

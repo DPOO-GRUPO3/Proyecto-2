@@ -88,7 +88,7 @@ public static void login(BaseDatos datos) {
 	elCliente.logIn(usuario, contrasena);
 	if(elCliente.getCliente()==null){
 		System.out.println("Error ingresando sesión");
-		
+		VentanaPrincipal.getErrorLogIn().setText("Error Ingresando sesión!");
 	}
 	else {
 		System.out.println("Ingresado correctamente");
