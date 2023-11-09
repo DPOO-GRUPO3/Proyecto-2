@@ -77,6 +77,7 @@ private static JTextField fechaInicial;
 private static JTextField fechaFin;
 private static JTextField sedeInicio;
 private static JTextField sedeFin;
+private static JLabel error;
 
 public static void login(BaseDatos datos) {
 	elCliente =new ControllerCliente();
@@ -157,6 +158,11 @@ private static void cargarVentanaCliente() {
     // Botón LogOut
     panel=BotonLogOut.crearBotonLogOut(panel, 200, 240, 150, 25);
     
+    // error
+    error= new JLabel("");
+    error.setBounds(10, 300, 400, 25);
+    panel.add(error);
+    
     
     frame.setVisible(true);
     
@@ -177,6 +183,7 @@ public void actionPerformed(ActionEvent e) {
 	}
 	else{
 		System.out.println("No hay carros disponibles, intente cambiar la categoría o las fechas");
+		error.setText("No hay carros disponibles, intente cambiar la categoría o las fechas");
 	}
 
 	
