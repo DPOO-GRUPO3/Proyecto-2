@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controller.BaseDatos;
 import controller.ControllerEmpleado;
+import model.Alquiler;
 import model.Carro;
 
 public class VentanaEmpleado extends JFrame implements ActionListener{
@@ -139,13 +140,17 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 			LocalDateTime fechaDeb, LocalDateTime fechaInicio, String categoria,
 			ArrayList<String> seguros, ArrayList<String> licencias, ArrayList<String> tarifas) throws IOException
 	{
+		Alquiler alquiler = null;
+		
 		if (reserva.equals("no"))
 		{
-			elEmpleado.CrearAlquiler(usuario, sedeDevolucion, sedeRecoger, fechaDeb, fechaInicio, categoria);
+			alquiler = elEmpleado.CrearAlquiler(usuario, sedeDevolucion, sedeRecoger, fechaDeb, fechaInicio, categoria);
 		}
 		else {
-			elEmpleado.crearAlquilerReserva(categoria, usuario, fechaInicio, fechaInicio);
+			alquiler =elEmpleado.crearAlquilerReserva(categoria, usuario, fechaInicio, fechaInicio);
 		}
+		
+		if (alquiler != null) {
 		
 		if (seguros != null) {
 		for (String seguro : seguros)
@@ -167,7 +172,8 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 		}}
 		
 		elEmpleado.actualizarDatos();
-		MostrarFactura();
+		MostrarFactura();}
+		else { JOptionPane.showMessageDialog(null, "No existe esta reserva");}
 		
 		
 	}
