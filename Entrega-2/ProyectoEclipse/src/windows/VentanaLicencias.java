@@ -7,9 +7,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +15,10 @@ import javax.swing.JTextField;
 
 public class VentanaLicencias extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	
 	private CrearAlquiler ventana;
 	private JTextField licencia1;
 	private JTextField licencia2;
@@ -34,6 +36,7 @@ public class VentanaLicencias extends JFrame implements ActionListener {
 		JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 		
 		JLabel label1 = new JLabel("Licencias");
 		 label1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -42,10 +45,10 @@ public class VentanaLicencias extends JFrame implements ActionListener {
 	     gbc.gridwidth = 2;
 		panel.add(label1,gbc);
 		
-		this.licencia1 = new JTextField(20);
-		this.licencia2 = new JTextField(20);
-		this.licencia3 = new JTextField(20);
-		this.licencia4 = new JTextField(20);
+		this.licencia1 = new JTextField(30);
+		this.licencia2 = new JTextField(30);
+		this.licencia3 = new JTextField(30);
+		this.licencia4 = new JTextField(30);
         
 		gbc.gridwidth = 1;
         gbc.gridx = 0;

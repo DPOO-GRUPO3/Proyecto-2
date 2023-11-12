@@ -359,7 +359,34 @@ public void setSeguro(String seguro)
 	}
 	alquiler.setSeguro(objSeguro);
 }
-		
+
+public void setTarifa(String tarifa)
+{
+	
+	Tarifa objTarifa = datos.getMapaTarifas().get(tarifa);
+	alquiler.setTarifaExcedente(objTarifa);
+}
+
+//devolver factura alquiler
+
+
+public ArrayList<String> getFactura()
+{
+	ArrayList<String> datos = new ArrayList<String>();
+	
+	String id= alquiler.getFactura().getId();
+	datos.add(id);
+	String pagoAnticipado = String.valueOf( alquiler.getFactura().getPagoAnticipado());
+	datos.add(pagoAnticipado);
+	String precioLicencias = String.valueOf(alquiler.getFactura().getPrecioLicencias());
+	datos.add(precioLicencias);
+	String total = String.valueOf(alquiler.getFactura().getTotal());
+	datos.add(total);
+	
+	return datos;
+}
+
+
 //Actualizar Dtaos
 		
 		public void actualizarDatos() throws IOException {

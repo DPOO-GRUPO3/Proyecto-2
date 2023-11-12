@@ -14,21 +14,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import controller.BaseDatos;
-import controller.ControllerCliente;
 import controller.ControllerEmpleado;
 
 public class VentanaEmpleado extends JFrame implements ActionListener{
 	
 	//Atributos
 	private static ControllerEmpleado elEmpleado; 
-	private static JFrame frame;
-	private static JLabel label1;
-	private static JButton alquiler;
-	private static JButton manteniemiento;
-	private static JButton disponibilidad;
 	private static JPanel panel;
 	private static BaseDatos datos;
 	
@@ -36,7 +28,7 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 	
 	//Constructor 
 	
-	private VentanaEmpleado()
+	public VentanaEmpleado()
 	{
 		setTitle("Empleado");
 		setSize(500, 200);
@@ -124,7 +116,7 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 	
 	public void CrearAlquiler( String reserva,String usuario, String sedeDevolucion, String sedeRecoger,
 			LocalDateTime fechaDeb, LocalDateTime fechaInicio, String categoria,
-			ArrayList<String> seguros, ArrayList<String> licencias) throws IOException
+			ArrayList<String> seguros, ArrayList<String> licencias, ArrayList<String> tarifas) throws IOException
 	{
 		if (reserva.equals("no"))
 		{
@@ -134,19 +126,36 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 			elEmpleado.crearAlquilerReserva(categoria, usuario, fechaInicio, fechaInicio);
 		}
 		
+		if (seguros != null) {
 		for (String seguro : seguros)
 		{
 			elEmpleado.setSeguro(seguro);
-		}
+		}}
 		
+		
+		if (licencias != null) {
 		for (String licencia : licencias)
 		{
-			elEmpleado.setSeguro(licencia);
-		}
+			elEmpleado.setLicencia(licencia);
+		}}
+		
+		if (tarifas != null) {
+		for (String tarifa : tarifas)
+		{
+			elEmpleado.setSeguro(tarifa);
+		}}
 		
 		elEmpleado.actualizarDatos();
+		MostrarFactura();
 		
 		
+	}
+	
+	//Crear factura como ventana
+	
+	private void MostrarFactura()
+	{
+		new VentanaFactura( elEmpleado.getFactura());
 	}
 
 }

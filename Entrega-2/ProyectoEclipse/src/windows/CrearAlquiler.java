@@ -46,6 +46,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 	private BaseDatos datos;
 	private ArrayList<String> seguros;
 	private ArrayList<String> licencias;
+	private ArrayList<String> tarifas;
 	
 	public CrearAlquiler(VentanaEmpleado ventana) {
 		
@@ -60,6 +61,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		JPanel panel = new JPanel(new GridBagLayout()); // GridLayout con 2 columnas
 		GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); 
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 		
 		//Reserva
 		
@@ -86,7 +88,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		//Cliente
 		
 		JLabel usuario= new JLabel ("Cliente (usuario):");
-		this.textoUsuario = new JTextField(20);
+		this.textoUsuario = new JTextField(30);
 		
 		gbc.gridx = 0;
         gbc.gridy = 1;
@@ -97,7 +99,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		//SedeRecoger
 		
 		JLabel sedeRecoger= new JLabel ("Sede Recoger:");
-		this.textoSedeRecoger = new JTextField(20);
+		this.textoSedeRecoger = new JTextField(30);
 				
 		gbc.gridx = 0;
 		gbc.gridy = 2;
@@ -108,7 +110,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		//SedeDevolucion
 		
 		JLabel sedeDevolucion= new JLabel ("Sede Devolucion:");
-		this.textoSedeDevolucion = new JTextField(20);
+		this.textoSedeDevolucion = new JTextField(30);
 		
 		gbc.gridx = 0;
         gbc.gridy = 3;
@@ -196,6 +198,15 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		 gbc.gridx = 1;
 	     panel.add(licencia, gbc);
 	     
+	     //Tarifa
+	     JButton tarifa = new JButton("Tarifas Excedentes");
+		 tarifa.setActionCommand("TARIFA");
+		 tarifa.addActionListener(this);
+
+		 gbc.gridy = 7;
+		 gbc.gridx = 2;
+	     panel.add(tarifa, gbc);
+	     
 	     //Continuar
 		 
 		 JButton crear = new JButton("Crear");
@@ -203,7 +214,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		 crear.addActionListener(this);
 
 		 gbc.gridx = 1;
-		 gbc.gridy = 8;
+		 gbc.gridy = 9;
 	     panel.add(crear, gbc);
 	     
 	     add(panel);
@@ -229,6 +240,12 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		else if (comando.equals("LICENCIA")){
 			
 			new VentanaLicencias(this);
+			
+		}
+		
+		else if (comando.equals("TARIFA")){
+			
+			new VentanaTarifa(this);
 			
 		}
 		
@@ -263,7 +280,7 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 			
 			try {
 				ventana.CrearAlquiler(reserva, usuario, sedeDevolucion, sedeRecoger, 
-						fechaFin, fechaInicio, categoria, seguros, licencias);
+						fechaFin, fechaInicio, categoria, seguros, licencias, tarifas);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -288,7 +305,19 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 		this.seguros.add(seguro);
 	}
 	
+	//Agregar Tarifa Excedente
+	public void setTarifa(String tarifa)
+	{
+		this.tarifas.add(tarifa);
+	}
 	
+	//Saber que hay en texto categoria
+	
+	public String Categoria() {
+		
+		return (String) categoriaComboBox.getSelectedItem();
+		
+	}
 	
 	
 
