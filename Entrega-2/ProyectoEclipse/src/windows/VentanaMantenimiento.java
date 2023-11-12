@@ -5,6 +5,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javax.swing.JButton;
@@ -76,7 +77,12 @@ public class VentanaMantenimiento extends JFrame implements ActionListener{
 		int dias = Integer.parseInt((String) textoDias.getSelectedItem());
 		LocalDateTime fecha = LocalDateTime.now();
 		
-		ventana.ActualizarCarro(placa, fecha, dias);
+		try {
+			ventana.ActualizarCarro(placa, fecha, dias);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		dispose();
 		
 	}
