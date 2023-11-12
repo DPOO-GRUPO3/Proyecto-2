@@ -286,6 +286,8 @@ public class CrearAlquiler extends JFrame implements ActionListener {
 				e1.printStackTrace();
 			}
 			
+			dispose();
+			
 		}
 		
 		
