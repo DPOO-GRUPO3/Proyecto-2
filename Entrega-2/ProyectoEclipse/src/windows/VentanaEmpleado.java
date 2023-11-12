@@ -13,9 +13,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controller.BaseDatos;
 import controller.ControllerEmpleado;
+import model.Carro;
 
 public class VentanaEmpleado extends JFrame implements ActionListener{
 	
@@ -64,6 +66,9 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
         panel.add(Box.createVerticalGlue());
         panel.add(disponibilidad);
         
+        // Botón LogOut
+        panel=BotonLogOut.crearBotonLogOut(panel, 200, 240, 150, 25);
+        
         add(panel);
         
         setLocationRelativeTo(null); 
@@ -86,7 +91,7 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 			VentanaPrincipal.getErrorLogIn().setText("Error Ingresando sesión!");
 		}
 		else {
-			System.out.println("Ingresado correctamente");
+			JOptionPane.showMessageDialog(null, "Ingresado Correctamente");
 			new VentanaEmpleado();
 		}
 	}
@@ -101,6 +106,19 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 		if (comando.equals("ALQUILER")){
 			
 			new CrearAlquiler(this);
+			
+			}
+		else if (comando.equals("MANTENIMIENTO")){
+			
+			new VentanaMantenimiento(this);
+			
+			}
+		
+		else if (comando.equals("DISPONIBILIDAD")){
+			
+			elEmpleado.cumplimientoFechaCarro( LocalDateTime.now());
+			JOptionPane.showMessageDialog(null, "Se han actualizado los carros que ya no estan en mantenimiento");
+			
 			
 			}
 		
@@ -149,6 +167,13 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 		MostrarFactura();
 		
 		
+	}
+	
+	// Dar mantenimiento
+	
+	public void ActualizarCarro ( String placa, LocalDateTime fechaHoy, int dias)
+	{
+		elEmpleado.ActualizarCarro(placa, fechaHoy, dias);
 	}
 	
 	//Crear factura como ventana

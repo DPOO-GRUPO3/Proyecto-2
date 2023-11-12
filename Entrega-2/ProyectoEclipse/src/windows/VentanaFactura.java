@@ -84,8 +84,7 @@ public class VentanaFactura extends JFrame {
 		add(panel);
 		setVisible(true);
 		
-		
-		
+	
 	}
 
 }

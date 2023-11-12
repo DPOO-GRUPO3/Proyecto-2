@@ -142,6 +142,8 @@ public static JLabel getErrorLogIn() {
 	    panel.add(errorLogIn);
 	    frame.setVisible(true);
 	    
+	    
+	    
 		
 	}
 
