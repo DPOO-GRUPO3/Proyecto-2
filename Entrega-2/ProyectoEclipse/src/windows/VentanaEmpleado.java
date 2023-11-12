@@ -66,9 +66,7 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
         panel.add(Box.createVerticalGlue());
         panel.add(disponibilidad);
         
-        // Botón LogOut
-        panel=BotonLogOut.crearBotonLogOut(panel, 200, 240, 150, 25);
-        
+      
         add(panel);
         
         setLocationRelativeTo(null); 
@@ -118,7 +116,12 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 			
 			elEmpleado.cumplimientoFechaCarro( LocalDateTime.now());
 			JOptionPane.showMessageDialog(null, "Se han actualizado los carros que ya no estan en mantenimiento");
-			
+			try {
+				elEmpleado.actualizarDatos();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			}
 		
@@ -171,9 +174,10 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 	
 	// Dar mantenimiento
 	
-	public void ActualizarCarro ( String placa, LocalDateTime fechaHoy, int dias)
+	public void ActualizarCarro ( String placa, LocalDateTime fechaHoy, int dias) throws IOException
 	{
 		elEmpleado.ActualizarCarro(placa, fechaHoy, dias);
+		elEmpleado.actualizarDatos();
 	}
 	
 	//Crear factura como ventana
@@ -181,6 +185,11 @@ public class VentanaEmpleado extends JFrame implements ActionListener{
 	private void MostrarFactura()
 	{
 		new VentanaFactura( elEmpleado.getFactura());
+	}
+	
+	public static ControllerEmpleado getEmpleado()
+	{
+		return VentanaEmpleado.elEmpleado;
 	}
 
 }

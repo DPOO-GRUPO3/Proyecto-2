@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.ControllerCliente;
+import controller.ControllerEmpleado;
 
 
 
@@ -30,8 +31,10 @@ public class BotonLogOut implements ActionListener{
 public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 	ControllerCliente elCliente =VentanaCliente.getElCliente();
+	
 	try {
 		elCliente.actualizarDatos();
+		
 		VentanaPrincipal.cargarVentanaPrincipal();
 	} catch (IOException e1) {
 		// TODO Auto-generated catch block
