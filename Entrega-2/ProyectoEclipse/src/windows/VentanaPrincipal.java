@@ -16,7 +16,17 @@ import view.Aplicacion;
 
 
 public class VentanaPrincipal implements ActionListener{
-public static Usuario getUsuario() {
+
+	// Atributos
+	private static Usuario usuario;
+	private static BaseDatos baseDatos;
+	private static JFrame frame;
+	private static JTextField nombreUsuario;
+	private static JTextField contrasena;
+	private static JTextField tipoUsuario;
+	private static JLabel errorLogIn;
+	
+	public static Usuario getUsuario() {
 		return usuario;
 	}
 
@@ -64,14 +74,8 @@ public static Usuario getUsuario() {
 		VentanaPrincipal.tipoUsuario = tipoUsuario;
 	}
 
-	// Atributos
-	private static Usuario usuario;
-	private static BaseDatos baseDatos;
-	private static JFrame frame;
-	private static JTextField nombreUsuario;
-	private static JTextField contrasena;
-	private static JTextField tipoUsuario;
-	private static JLabel errorLogIn;
+
+
 	
 public static JLabel getErrorLogIn() {
 		return errorLogIn;
@@ -153,6 +157,6 @@ public static JLabel getErrorLogIn() {
 		VentanaCliente.login(baseDatos);
 	}	
 		else  if (tipo.equals("3")) {
-			// LLamen lo del empleado
+		VentanaEmpleado.login(baseDatos);
 		}
 }}

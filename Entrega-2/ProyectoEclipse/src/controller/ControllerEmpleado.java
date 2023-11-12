@@ -29,6 +29,8 @@ public class ControllerEmpleado {
 	
 	private BaseDatos datos;
 	
+	private Alquiler alquiler;
+	
 	private HashMap<String,Carro> mapaCarros; //mapa carros por placa
 	private HashMap<String,Reserva> mapaReservas; //mapa reservas por id
 	private HashMap<String,Categoria> mapaCategorias;//mapa categorias por nombre
@@ -74,24 +76,23 @@ public class ControllerEmpleado {
 	
 	
 	
-	public void getEmpleado(String usuario)
-	{
-		if (mapaEmpleados.containsKey(usuario))
-		{
-			this.empleado= mapaEmpleados.get(usuario);
-		}
-		else {System.out.println("No se encuentra este usuario");}
+	//Verificar login
+	public void logIn(String usuario,String contrasena) {
+		Empleado empleado = datos.getMapaEmpleados().get(usuario);
+		if(empleado!=null) {
+			String contr=empleado.getContrasena();
+			if(contr.equals(contrasena)==true) {
+				this.empleado=empleado;
+			}
+	}	
+	
 	}
 	
-	public boolean verificarContrasena(String contrasena)
+	//devolver empleado
+	
+	public Empleado getEmpleado()
 	{
-		boolean r= false;
-		if(empleado.getContrasena().equals(contrasena))
-		{
-			r= true;
-		}
-		
-		return r;
+		return this.empleado;
 	}
 	
 	private Carro Disponibilidad(Sede sede,Categoria categoria, LocalDateTime fechaInicio, LocalDateTime fechaFin)
@@ -172,7 +173,7 @@ public class ControllerEmpleado {
 		
 		Carro carro = Disponibilidad(objSedeRecoger, objCategoria,fechaInicio, fechaDeb);
 		
-		Alquiler alquiler= new Alquiler(objCliente, fechaDeb, fechaInicio, objSedeRecoger, objSedeDevolucion, carro);
+		this.alquiler= new Alquiler(objCliente, fechaDeb, fechaInicio, objSedeRecoger, objSedeDevolucion, carro);
 		alquiler.setTarifa(tarifa);
 		
 		if (!(sedeDevolucion.equals(sedeRecoger)))
@@ -202,7 +203,7 @@ public class ControllerEmpleado {
 		Tarifa tarifaExcedente= null;
 		Carro carro = reserva.getCarroReservado();
 		
-		Alquiler alquiler= new Alquiler(cliente, fechaFin, fechaInicio, sedeRecoger, sedeDevolucion, carro);
+		this.alquiler= new Alquiler(cliente, fechaFin, fechaInicio, sedeRecoger, sedeDevolucion, carro);
 		alquiler.setTarifa(tarifa);
 		
 		if (!(sedeDevolucion.equals(sedeRecoger)))
@@ -338,6 +339,26 @@ public class ControllerEmpleado {
 			System.out.println(id+pagoAnticipado+total+cliente+alquiler+ licencias + "\n");
 		}
 
+// Crear Licencias
+		
+public void setLicencia(String licencia)
+{
+	Licencia objLicencia = datos.getMapaLicencias().get(licencia);
+	alquiler.setLicencia(objLicencia);
+}
+
+public void setSeguro(String seguro)
+{
+	Seguro objSeguro = null;
+	
+	if (seguro == "Perdida") {
+		objSeguro = datos.getMapaSeguros().get("1");
+	}
+	else {
+		objSeguro = datos.getMapaSeguros().get("2");
+	}
+	alquiler.setSeguro(objSeguro);
+}
 		
 //Actualizar Dtaos
 		
