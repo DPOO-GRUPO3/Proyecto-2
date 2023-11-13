@@ -2,6 +2,7 @@ package windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.stream.IntStream;
 
 import javax.swing.JButton;
@@ -238,9 +239,23 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	String nombreCat=categoria.getText();
 	String sedeRec=sedeInicio.getText();
-	String timeRecoger=fechaInicial.getText();
+	
 	String sedeFin2=sedeFin.getText();
-	String timeFin=fechaFin.getText();
+	
+	
+	int dInicio = (int) diaInicio.getSelectedItem();
+	int mInicio = (int) mesInicio.getSelectedItem();
+	int aInicio = (int) anioInicio.getSelectedItem();
+	int hInicio = (int) horaInicio.getSelectedItem();
+	LocalDateTime fechaInicio = LocalDateTime.of(aInicio, mInicio, dInicio, hInicio,0,0);
+	
+	int dFin = (int) diaFin.getSelectedItem();
+	int mFin = (int) mesFin.getSelectedItem();
+	int aFin = (int) anioFin.getSelectedItem();
+	int hFin = (int) horaFin.getSelectedItem();
+	LocalDateTime fechaFin = LocalDateTime.of(aFin, mFin, dFin, hFin,0,0);
+	String timeFin=fechaFin.toString();
+	String timeRecoger= fechaInicio.toString();
 	double cobro=elCliente.crearReserva(nombreCat, sedeRec, timeRecoger, sedeFin2, timeFin);
 	if(cobro!=0) {
 	System.out.println("Su reserva está lista, se le cobró el 30% correspondiente a"
