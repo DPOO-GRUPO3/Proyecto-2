@@ -197,6 +197,7 @@ public class ControllerEmpleado {
 		Cliente cliente= mapaClientes.get(usuario);
 		Categoria categoria = mapaCategorias.get(categoriaId);
 		Reserva reserva = verificarReserva(categoria, cliente, fechaInicio, fechaFin);
+		if (reserva != null) {
 		Sede sedeRecoger= reserva.getSedeInicio();
 		Sede sedeDevolucion= reserva.getSedeFin();
 		Temporada tarifa = tarifa(categoria, fechaInicio);
@@ -220,7 +221,9 @@ public class ControllerEmpleado {
 		carro.setEstado("alquilado");
 		
 		
-		return alquiler;
+		return alquiler;}
+		
+		else {return null;}
 		
 	}
 		
