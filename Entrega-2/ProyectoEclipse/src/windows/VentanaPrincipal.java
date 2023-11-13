@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.BaseDatos;
-
+import controller.ControllerAdministrador;
 import model.Usuario;
 import view.Aplicacion;
 
@@ -152,7 +152,8 @@ public static JLabel getErrorLogIn() {
 		// TODO Auto-generated method stub
 		String tipo =tipoUsuario.getText();
 		if (tipo.equals("1")){
-			//// Llamen aca lo del admin
+			ControllerAdministrador.login(baseDatos);
+			
 		}
 		else if (tipo.equals("2")) {
 		System.out.println("Hi");

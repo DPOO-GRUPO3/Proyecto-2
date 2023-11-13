@@ -7,12 +7,16 @@ import model.Carro;
 //import java.util.HashMap;
 //import controller.BaseDatos;
 import model.Empleado;
+import windows.VentanaAdministrador;
+import windows.VentanaPrincipal;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+
+import windows.VentanaSeleccionSede;
 
 public class ControllerAdministrador {
 	
@@ -36,6 +40,9 @@ public class ControllerAdministrador {
 	}
 	
 	public void LogIn(String usuario,String contrasena) {
+		
+		//String usuario = VentanaPrincipal.getNombreUsuario().getText();
+		//String contrasena =VentanaPrincipal.getContrasena().getText();
 
 		Administrador administrador = datos.getMapaAdministradores().get(usuario);
 		
@@ -47,6 +54,32 @@ public class ControllerAdministrador {
 			System.out.println("Error al ingresar");
 		}
 	}
+	
+	public static boolean login(BaseDatos datos) {
+		
+        //ControllerAdministrador elAdministrador = new ControllerAdministrador();
+		//administrador.setDatos(datos);
+        
+        String usuario = VentanaPrincipal.getNombreUsuario().getText();
+        String contrasena = VentanaPrincipal.getContrasena().getText();
+        
+        Administrador administrador = datos.getMapaAdministradores().get(usuario);
+        
+		if(administrador.getUsuario().equals(usuario)&& administrador.getContrasena().equals(contrasena)) {
+		    //administrador=administrador;
+            System.out.println("Ingresado correctamente");
+            VentanaSeleccionSede.mostrarVentana();
+            return true;
+			
+		}
+		else {
+			System.out.println("Error al ingresar");
+			VentanaPrincipal.getErrorLogIn().setText("Error Ingresando sesiÃ³n!");
+			return false;
+		}
+		
+    }
+	
 		
 		
 	/*
@@ -92,13 +125,13 @@ public class ControllerAdministrador {
 	
     public void eliminarlineaEmpleados(String archivo, String contenidoAEliminar) {
         try {
-            // Abre el archivo original y un archivo temporal para escritura
+            
             BufferedReader reader = new BufferedReader(new FileReader(archivo));
             BufferedWriter writer = new BufferedWriter(new FileWriter("/data/tempEmpleados.txt"));
 
             String lineaActual;
 
-            // Lee línea por línea y copia todas las líneas excepto la que deseas eliminar
+            // Lee linea por linea y copia todas las lineas excepto la que deseas eliminar
             while ((lineaActual = reader.readLine()) != null) {
                 if (!lineaActual.contains(contenidoAEliminar)) {
                     writer.write(lineaActual + System.getProperty("line.separator"));
@@ -123,16 +156,15 @@ public class ControllerAdministrador {
     
     public static void agregarLineaEmpleados(String archivo, String nuevaLinea) {
         try {
-            // Abre el archivo en modo de adición
+            // Abre el archivo en modo de adicion
             BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true));
             
-            // Escribe la nueva línea en el archivo
+            // Escribe la nueva linea en el archivo
             writer.write(nuevaLinea + System.getProperty("line.separator"));
             
-            // Cierra el archivo
             writer.close();
             
-            System.out.println("Nueva línea agregada exitosamente.");
+            System.out.println("Nueva lï¿½nea agregada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -145,7 +177,7 @@ public class ControllerAdministrador {
             BufferedWriter writer = new BufferedWriter(new FileWriter("data/tempVehiculos.txt"));
             String lineaActual;
 
-            // Lee línea por línea y copia todas las líneas excepto las que contienen el fragmento
+            // Lee lï¿½nea por lï¿½nea y copia todas las lï¿½neas excepto las que contienen el fragmento
             while ((lineaActual = reader.readLine()) != null) {
                 if (!lineaActual.contains(placa)) {
                     writer.write(lineaActual + System.getProperty("line.separator"));
@@ -175,7 +207,7 @@ public class ControllerAdministrador {
             BufferedWriter writer = new BufferedWriter(new FileWriter("data/tempEmpleados.txt"));
             String lineaActual;
 
-            // Lee línea por línea y copia todas las líneas excepto las que contienen el fragmento
+            // Lee lï¿½nea por lï¿½nea y copia todas las lï¿½neas excepto las que contienen el fragmento
             while ((lineaActual = reader.readLine()) != null) {
                 if (!lineaActual.contains(fragmento)) {
                     writer.write(lineaActual + System.getProperty("line.separator"));
@@ -199,16 +231,12 @@ public class ControllerAdministrador {
     }
     
     public void agregar(String archivo, String lineaEliminar) {
-        //String archivo = "empleados.txt";
-        //String contenidoAEliminar = "Juan Pérez,30"; // Debes proporcionar el contenido exacto de la fila que deseas eliminar
-
+     
     	agregarLineaEmpleados(archivo, lineaEliminar);
     }
 
     public void eliminar(String archivo, String lineaEliminar) {
-        //String archivo = "empleados.txt";
-        //String contenidoAEliminar = "Juan Pérez,30"; // Debes proporcionar el contenido exacto de la fila que deseas eliminar
-
+        
         eliminarlineaEmpleados(archivo, lineaEliminar);
     }
 
