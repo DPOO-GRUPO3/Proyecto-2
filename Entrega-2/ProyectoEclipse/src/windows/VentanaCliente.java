@@ -2,8 +2,10 @@ package windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.stream.IntStream;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +17,15 @@ import controller.ControllerCliente;
 public class VentanaCliente implements ActionListener{
 
 private static ControllerCliente elCliente;
+private static JComboBox<Integer> diaInicio;
+private static JComboBox<Integer> mesInicio;
+private static JComboBox<Integer> anioInicio;
+private static JComboBox<Integer> diaFin;
+private static JComboBox<Integer> mesFin;
+private static JComboBox<Integer> anioFin;
+private static JComboBox<Integer> horaFin;
+private static JComboBox<Integer> horaInicio;
+private static JComboBox<String> categoriaComboBox;
 public static ControllerCliente getElCliente() {
 	return elCliente;
 }
@@ -110,28 +121,82 @@ private static void cargarVentanaCliente() {
     
     // Categoria
     JLabel labelCategoria = new JLabel("Categoria");
-    labelCategoria.setBounds(10,20,80,25);
+    labelCategoria.setBounds(10,10,80,25);
     categoria = new JTextField(20);
-    categoria.setBounds(100,20,165,25);
+    categoria.setBounds(100,10,165,25);
     panel.add(labelCategoria);
     panel.add(categoria);
     
-    // Fecha Inicial
-    JLabel labelFechaIn = new JLabel("Fecha Inicio");
-    labelFechaIn.setBounds(10,50,80,25);
-    fechaInicial = new JTextField(20);
-    fechaInicial.setBounds(100,50,165,25);
-    panel.add(labelFechaIn);
-    panel.add(fechaInicial);
+	//FechaInicio
+	JLabel FechaInicio= new JLabel ("FechaInicio:");
+	FechaInicio.setBounds(10,50,80,25);
+	
+	diaInicio = new JComboBox<>();
+	diaInicio.setBounds(100, 50, 50, 25);
+    IntStream.rangeClosed(1, 31).forEach(diaInicio::addItem);
     
-    // Fecha Fin
-    JLabel labelFechaFin = new JLabel("Fecha Fin");
-    labelFechaFin.setBounds(10,80,80,25);
-    fechaFin = new JTextField(20);
-    fechaFin.setBounds(100,80,165,25);
-    panel.add(labelFechaFin);
-    panel.add(fechaFin);
+    mesInicio = new JComboBox<>();
+    mesInicio.setBounds(160, 50, 50, 25);
+    IntStream.rangeClosed(1, 12).forEach(mesInicio::addItem);
+	
+    anioInicio = new JComboBox<>();
+    anioInicio.setBounds(220, 50, 70, 25);
+    IntStream.rangeClosed(2023, 2033).forEach(anioInicio::addItem);
     
+    horaInicio = new JComboBox<>();
+    horaInicio.setBounds(300, 50, 60, 25);
+    IntStream.rangeClosed(0, 23).forEach(horaInicio::addItem);
+	
+	panel.add(FechaInicio);
+	panel.add(diaInicio);
+	panel.add(mesInicio);
+	panel.add(anioInicio);
+	panel.add(horaInicio);
+	//FechaFin
+	JLabel FechaFin= new JLabel ("FechaFin:");
+	FechaFin.setBounds(10,80,80,25);
+			
+	diaFin = new JComboBox<>();
+	diaFin.setBounds(100, 80, 50, 25);
+	IntStream.rangeClosed(1, 31).forEach(diaFin::addItem);
+	        
+	mesFin = new JComboBox<>();
+	mesFin.setBounds(160, 80, 50, 25);
+	 IntStream.rangeClosed(1, 12).forEach(mesFin::addItem);
+			
+	anioFin = new JComboBox<>();
+	anioFin.setBounds(220, 80, 70, 25);
+	IntStream.rangeClosed(2023, 2033).forEach(anioFin::addItem);
+	
+    horaFin = new JComboBox<>();
+    horaFin.setBounds(300, 80, 60, 25);
+    IntStream.rangeClosed(0, 23).forEach(horaFin::addItem);
+	
+	FechaFin.setBounds(10,80,80,25);
+	
+
+     panel.add(FechaFin);
+	 panel.add(diaFin);
+	 panel.add(mesFin);
+	 panel.add(anioFin);
+	 panel.add(horaFin);
+	 // ETIQUETAS
+		JLabel elDia= new JLabel ("Día");
+		elDia.setBounds(100,40,80,10);
+		
+		JLabel elMes= new JLabel ("Mes");
+		elMes.setBounds(160,40,80,10);
+		
+		JLabel elAnio = new JLabel ("Año");
+		elAnio.setBounds(220,40,80,10);
+		
+		JLabel laHora = new JLabel ("Hora"); 
+		laHora.setBounds(300,40,80,10);
+		 panel.add(elDia);
+		 panel.add(elMes);
+		 panel.add(elAnio);
+		 panel.add(laHora);
+	
     // Sede Inicio
     JLabel labelSedeInicio = new JLabel("Sede Inicial");
     labelSedeInicio.setBounds(10,110,80,25);
