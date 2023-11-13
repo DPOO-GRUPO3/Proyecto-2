@@ -78,10 +78,13 @@ public double crearReserva(String nombreCategoria, String sedeRec,
 		Categoria categoria=datos.getMapaCateg().get(nombreCategoria);
 		Sede sede1=datos.getMapaSedes().get(sedeRec);
 		Sede sede2=datos.getMapaSedes().get(sedeFin);
+		System.out.println("Reservas "+Reserva.numeroReservas);
+		
 		Reserva reserva=new Reserva(cliente, fechaPed1, fechaPed2,
 				
 				categoria, carro, sede1, sede2);
 		//Pongo reserva en mapa reservas
+		System.out.println("Reservas "+Reserva.numeroReservas);
 		String idReserva =String.valueOf(reserva.getNumReserva());
 		datos.getMapaReservas().put(idReserva, reserva);
 		//poner reserva en carro

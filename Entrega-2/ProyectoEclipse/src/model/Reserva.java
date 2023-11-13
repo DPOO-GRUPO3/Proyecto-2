@@ -17,7 +17,7 @@ public Reserva(Cliente cliente,LocalDateTime fechaYHoraInicio,LocalDateTime fech
 		Categoria categoria,Carro carroReservado,Sede sedeInicio,Sede sedeFin
 		) {
 	numeroReservas++;
-	this.numeroReserva=numeroReserva+1;
+	this.numeroReserva=numeroReservas+1;
 	this.cliente=cliente;
 	this.fechaYHoraInicio=fechaYHoraInicio;
 	this.fechaYHoraFin=fechaYHoraFin;
@@ -25,7 +25,7 @@ public Reserva(Cliente cliente,LocalDateTime fechaYHoraInicio,LocalDateTime fech
 	this.carroReservado=carroReservado;
 	this.sedeInicio=sedeInicio;
 	this.sedeFin=sedeFin;
-	
+	System.out.println(numeroReserva);
 }
 public void setNumReserva(int num) {
 	this.numeroReserva=num;
