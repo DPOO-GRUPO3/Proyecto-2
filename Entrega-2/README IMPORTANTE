@@ -1,0 +1,4 @@
+En el doc se pegó solo un diagrama, los demás están en esta carpeta. 
+Hay clases que parecen no tener relaciones porque se intercambia información de atributos static solamente
+sin crear instancias de las clases (como sucede con la ventana), siguiéndose así las convenciones vigentes del uml.
+ 
