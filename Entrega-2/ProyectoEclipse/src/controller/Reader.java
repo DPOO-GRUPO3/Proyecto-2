@@ -161,7 +161,7 @@ public Reserva descomprimirReserva(String linea,HashMap<String, Sede> mapaSedes,
 	LocalDateTime fin=LocalDateTime.parse(fechaF);
 	
 	Reserva r =new Reserva(cliente, in, fin, cat, carro, sIn, sFin);
-	r.setNumReserva(Integer.parseInt(id));
+	//r.setNumReserva(Integer.parseInt(id));
 	
 	return r;
 } 
